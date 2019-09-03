@@ -11,7 +11,7 @@ import time
 
 def add_players():
     players = []
-    for i in range(1, 6):
+    for i in range(1, 7):
         player_dict = {
             "name": "P"+ str(i),
             "card1": None,
