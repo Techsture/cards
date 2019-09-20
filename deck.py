@@ -40,7 +40,7 @@ def main():
     # Deal two cards to each player
     player_one_hand = []
     player_two_hand = []
-    for position in range(5):
+    for position in range(2):
         player_one_hand.append(deck.pop())
         player_two_hand.append(deck.pop())
     # Print out the hands
