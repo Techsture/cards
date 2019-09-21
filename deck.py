@@ -32,6 +32,26 @@ def create_deck():
     return deck
 
 
+def deal_card(deck):
+    card = deck.pop()
+    return card
+
+
+def deal_community_cards(deck):
+    community_cards = []
+    # Flop
+    deal_card(deck)
+    for card in range(3):
+        community_cards.append(deal_card(deck))
+    # Turn
+    deal_card(deck)
+    community_cards.append(deal_card(deck))
+    # River
+    deal_card(deck)
+    community_cards.append(deal_card(deck))
+    return community_cards
+
+
 def main():
     # Create deck of cards
     deck = create_deck()
@@ -41,14 +61,19 @@ def main():
     player_one_hand = []
     player_two_hand = []
     for position in range(2):
-        player_one_hand.append(deck.pop())
-        player_two_hand.append(deck.pop())
+        player_one_hand.append(deal_card(deck))
+        player_two_hand.append(deal_card(deck))
     # Print out the hands
     print(Style.RESET_ALL + "Player 1 has:", end=' ')
     for card in player_one_hand:
         print(Back.WHITE + Fore.BLACK + card + Back.BLACK, end=' ')
     print(Style.RESET_ALL + "\nPlayer 2 has:", end=' ')
     for card in player_two_hand:
+        print(Back.WHITE + Fore.BLACK + card + Back.BLACK, end=' ')
+    print(Style.RESET_ALL + "\n")
+    community_cards = deal_community_cards(deck)
+    print("Community Cards: ", end=' ')
+    for card in community_cards:
         print(Back.WHITE + Fore.BLACK + card + Back.BLACK, end=' ')
     print(Style.RESET_ALL + "\n")
 
